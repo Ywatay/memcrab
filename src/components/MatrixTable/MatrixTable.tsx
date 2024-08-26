@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, Paper, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Cell } from '../../type/type';
-import { calculateColumnMedians, calculateRowAverages, calculateRowSum } from './utils';
+import { calculateColumnMedians, calculateRowSum } from './utils';
 
 interface MatrixTableProps {
   matrix: Cell[][];
@@ -90,7 +90,6 @@ const MatrixTable: React.FC<MatrixTableProps> = ({ matrix, onCellUpdate, onRemov
         <TableBody>
           {matrix.map((row, rowIndex) => {
             const rowSum = calculateRowSum(row);
-            const rowAverage = calculateRowAverages(row);
             return (
               <TableRow key={rowIndex}>
                 {row.map((cell, colIndex) => {
